@@ -1,0 +1,46 @@
+services:
+    webtownkunstmaanfrontenduser.user_manager:
+        class: Webtown\KunstmaanFrontendUserBundle\Model\KunstmaanFrontendUserManager
+        arguments: ["@doctrine", "@webtownkunstmaanfrontenduser.util.password_updater", "%webtown_kunstmaan_frontend_user_class%"]
+
+    webtownkunstmaanfrontenduser.user_provider:
+        class: Webtown\KunstmaanFrontendUserBundle\Security\KunstmaanFrontendUserProvider
+        arguments: ["@webtownkunstmaanfrontenduser.user_manager"]
+
+    webtownkunstmaanfrontenduser.util.password_updater:
+        class: Webtown\KunstmaanFrontendUserBundle\Util\PasswordUpdater
+        arguments: ["@security.encoder_factory"]
+        
+    webtownkunstmaanfrontenduser.mailer:
+        class: Webtown\KunstmaanFrontendUserBundle\Mailer\TwigSwiftMailer
+        arguments: ["@mailer", "@router", "@twig", "%webtown_kunstmaan_frontend_registration_confirmation_email_template%", "%webtown_kunstmaan_frontend_resetting_email_template%"]
+        calls:
+            - [ setFromEmail, ["%webtown_kunstmaan_frontend_email%"]]
+
+    webtownkunstmaanfrontenduser.registration.form.type:
+        class: Webtown\KunstmaanFrontendUserBundle\Form\RegistrationFormType
+        arguments: ["%webtown_kunstmaan_frontend_user_class%"]
+        tags:
+          - { name: form.type }
+
+    webtownkunstmaanfrontenduser.resetting.form.type:
+        class: Webtown\KunstmaanFrontendUserBundle\Form\ResettingFormType
+        arguments: ["%webtown_kunstmaan_frontend_user_class%"]
+        tags:
+          - { name: form.type }
+
+    webtownkunstmaanfrontenduser.profile.form.type:
+        class: Webtown\KunstmaanFrontendUserBundle\Form\ProfileFormType
+        arguments: ["%webtown_kunstmaan_frontend_user_class%"]
+        tags:
+          - { name: form.type }
+
+    webtownkunstmaanfrontenduser.security.login_manager:
+        class: Webtown\KunstmaanFrontendUserBundle\Security\LoginManager
+        arguments: ["@security.token_storage", "@security.user_checker", "@security.authentication.session_strategy", "@request_stack", null]
+
+    webtownkunstmaanfrontenduser.security.interactive_login_listener:
+        class: Webtown\KunstmaanFrontendUserBundle\EventListener\LastLoginListener
+        arguments: ["@webtownkunstmaanfrontenduser.user_manager"]
+        tags:
+            - { name: kernel.event_subscriber }

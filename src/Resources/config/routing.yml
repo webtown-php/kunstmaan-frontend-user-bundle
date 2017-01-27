@@ -1,0 +1,54 @@
+KunstmaanAdminBundle:
+    resource: "@KunstmaanAdminBundle/Resources/config/routing.yml"
+
+webtown_kunstmaan_frontend_user_login:
+    path:  /login
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+webtown_kunstmaan_frontend_user_security_check:
+    path:  /login_check
+    defaults: { _controller: FOSUserBundle:Security:check }
+
+webtown_kunstmaan_frontend_user_security_logout:
+    path:  /logout
+    defaults: { _controller: FOSUserBundle:Security:logout }
+
+webtown_kunstmaan_frontend_user_resetting_request:
+    path:  /resetting/request
+    defaults: { _controller: WebtownKunstmaanFrontendUserBundle:Resetting:frontendRequest }
+
+webtown_kunstmaan_frontend_user_resetting_send_email:
+    path:  /resetting/send-email
+    defaults: { _controller: WebtownKunstmaanFrontendUserBundle:Resetting:frontendSendEmail }
+
+webtown_kunstmaan_frontend_user_resetting_check_email:
+    path:  /resetting/check-email
+    defaults: { _controller: WebtownKunstmaanFrontendUserBundle:Resetting:frontendCheckEmail }
+
+webtown_kunstmaan_frontend_user_resetting_reset:
+    path:  /resetting/reset/{token}
+    defaults: { _controller: WebtownKunstmaanFrontendUserBundle:Resetting:frontendReset }
+
+webtown_kunstmaan_frontend_user_registration:
+    path:  /register
+    defaults: { _controller: WebtownKunstmaanFrontendUserBundle:Registration:frontendRegister }
+
+webtown_kunstmaan_frontend_user_registration_confirmed:
+    path:  /registration/confirmed
+    defaults: { _controller: WebtownKunstmaanFrontendUserBundle:Registration:frontendConfirmed }
+
+webtown_kunstmaan_frontend_user_registration_confirm:
+    path:  /registration/confirm/{token}
+    defaults: { _controller: WebtownKunstmaanFrontendUserBundle:Registration:frontendConfirm }
+
+webtown_kunstmaan_frontend_user_registration_check_email:
+    path:  /registration/check-email
+    defaults: { _controller: WebtownKunstmaanFrontendUserBundle:Registration:frontendCheckEmail }
+
+webtown_kunstmaan_frontend_user_profile_show:
+    path:  /profile
+    defaults: { _controller: WebtownKunstmaanFrontendUserBundle:Profile:frontendShow }
+
+webtown_kunstmaan_frontend_user_profile_edit:
+    path:  /profile/edit
+    defaults: { _controller: WebtownKunstmaanFrontendUserBundle:Profile:frontendEdit }
