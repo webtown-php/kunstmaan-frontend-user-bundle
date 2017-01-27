@@ -96,7 +96,7 @@ security:
         fos_userbundle:
             id: fos_user.user_provider.username
         webtown_kunstmaanfrontenduserbundle:
-                id: webtownkunstmaanfrontenduser.user_provider
+            id: webtownkunstmaanfrontenduser.user_provider
 
     firewalls:
         admin:
