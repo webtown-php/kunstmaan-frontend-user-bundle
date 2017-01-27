@@ -96,7 +96,7 @@ security:
         fos_userbundle:
             id: fos_user.user_provider.username
         webtown_kunstmaanfrontenduserbundle:
-                id: webtownkunstmaanfrontenduser.user_provider
+            id: webtownkunstmaanfrontenduser.user_provider
 
     firewalls:
         admin:
@@ -288,4 +288,6 @@ Notes:
 ======
 
 As the bundle is defined as the child bundle of KunstmaanAdminBundle be careful not to accidentally override the Kunstmaan templates. To avoid this all the template files of the bundle has the 'frontend_' prefix. Of course you can override them in the usual way.
+
+As mentioned in the routing section the import of the KunstmaanAdminBundle routing.yml file must be removed from the application routing. And of course the routing.yml of this bundle must be imported instead.
 
