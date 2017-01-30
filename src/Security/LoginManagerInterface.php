@@ -11,15 +11,15 @@
 
 namespace Webtown\KunstmaanFrontendUserBundle\Security;
 
-use Webtown\KunstmaanFrontendUserBundle\Entity\KunstmaanFrontendUserInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Webtown\KunstmaanFrontendUserBundle\Entity\KunstmaanFrontendUserInterface;
 
 interface LoginManagerInterface
 {
     /**
-     * @param string        $firewallName
+     * @param string                         $firewallName
      * @param KunstmaanFrontendUserInterface $user
-     * @param Response|null $response
+     * @param Response|null                  $response
      */
     public function logInUser($firewallName, KunstmaanFrontendUserInterface $user, Response $response = null);
 }

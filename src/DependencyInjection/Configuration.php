@@ -4,9 +4,9 @@ namespace Webtown\KunstmaanFrontendUserBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Webtown\KunstmaanFrontendUserBundle\Form\ProfileFormType;
 use Webtown\KunstmaanFrontendUserBundle\Form\RegistrationFormType;
 use Webtown\KunstmaanFrontendUserBundle\Form\ResettingFormType;
-use Webtown\KunstmaanFrontendUserBundle\Form\ProfileFormType;
 
 /**
  * This is the class that validates and merges configuration from your app/config files.
@@ -27,14 +27,14 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('user_class')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('firewall_name')->isRequired()->cannotBeEmpty()->end()
-				->arrayNode('email')
-				    ->addDefaultsIfNotSet()
-					->canBeUnset()
-					->children()
-						->scalarNode('address')->isRequired()->cannotBeEmpty()->defaultValue('info@webtown.hu')->end()
-						->scalarNode('sender_name')->isRequired()->cannotBeEmpty()->defaultValue('Webtown')->end()
-					->end()
-				->end()
+                ->arrayNode('email')
+                    ->addDefaultsIfNotSet()
+                    ->canBeUnset()
+                    ->children()
+                        ->scalarNode('address')->isRequired()->cannotBeEmpty()->defaultValue('info@example.com')->end()
+                        ->scalarNode('sender_name')->isRequired()->cannotBeEmpty()->defaultValue('Acme Company')->end()
+                    ->end()
+                ->end()
                 ->arrayNode('registration')
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()

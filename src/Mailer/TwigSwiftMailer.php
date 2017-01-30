@@ -11,8 +11,8 @@
 
 namespace Webtown\KunstmaanFrontendUserBundle\Mailer;
 
-use Webtown\KunstmaanFrontendUserBundle\Entity\KunstmaanFrontendUserInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Webtown\KunstmaanFrontendUserBundle\Entity\KunstmaanFrontendUserInterface;
 
 /**
  * @author Christophe Coevoet <stof@notk.org>
@@ -38,9 +38,9 @@ class TwigSwiftMailer
      * @var array
      */
     protected $fromEmail;
-	
-	protected $confirmationTemplate;
-	protected $resettingTemplate;
+
+    protected $confirmationTemplate;
+    protected $resettingTemplate;
 
     /**
      * TwigSwiftMailer constructor.
@@ -48,22 +48,22 @@ class TwigSwiftMailer
      * @param \Swift_Mailer         $mailer
      * @param UrlGeneratorInterface $router
      * @param \Twig_Environment     $twig
-     * @param string                 $confirmationTemplate
-     * @param string                 $resettingTemplate
+     * @param string                $confirmationTemplate
+     * @param string                $resettingTemplate
      */
     public function __construct(\Swift_Mailer $mailer, UrlGeneratorInterface $router, \Twig_Environment $twig, $confirmationTemplate, $resettingTemplate)
     {
         $this->mailer = $mailer;
         $this->router = $router;
         $this->twig = $twig;
-		$this->confirmationTemplate = $confirmationTemplate;
-		$this->resettingTemplate = $resettingTemplate;
+        $this->confirmationTemplate = $confirmationTemplate;
+        $this->resettingTemplate = $resettingTemplate;
     }
-	
-	public function setFromEmail($email)
-	{
-		$this->fromEmail = $email;
-	}
+
+    public function setFromEmail($email)
+    {
+        $this->fromEmail = $email;
+    }
 
     /**
      * {@inheritdoc}
@@ -71,12 +71,12 @@ class TwigSwiftMailer
     public function sendConfirmationEmailMessage(KunstmaanFrontendUserInterface $user)
     {
         $template = $this->confirmationTemplate;
-        $url = $this->router->generate('webtown_kunstmaan_frontend_user_registration_confirm', array('token' => $user->getConfirmationToken()), UrlGeneratorInterface::ABSOLUTE_URL);
+        $url = $this->router->generate('webtown_kunstmaan_frontend_user_registration_confirm', ['token' => $user->getConfirmationToken()], UrlGeneratorInterface::ABSOLUTE_URL);
 
-        $context = array(
+        $context = [
             'user' => $user,
             'confirmationUrl' => $url,
-        );
+        ];
 
         $this->sendMessage($template, $context, $this->fromEmail, (string) $user->getEmail());
     }
@@ -87,12 +87,12 @@ class TwigSwiftMailer
     public function sendResettingEmailMessage(KunstmaanFrontendUserInterface $user)
     {
         $template = $this->resettingTemplate;
-        $url = $this->router->generate('webtown_kunstmaan_frontend_user_resetting_reset', array('token' => $user->getConfirmationToken()), UrlGeneratorInterface::ABSOLUTE_URL);
+        $url = $this->router->generate('webtown_kunstmaan_frontend_user_resetting_reset', ['token' => $user->getConfirmationToken()], UrlGeneratorInterface::ABSOLUTE_URL);
 
-        $context = array(
+        $context = [
             'user' => $user,
             'confirmationUrl' => $url,
-        );
+        ];
 
         $this->sendMessage($template, $context, $this->fromEmail, (string) $user->getEmail());
     }
