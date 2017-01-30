@@ -29,7 +29,6 @@ class RegistrationController extends Controller
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 if ($this->container->getParameter('webtown_kunstmaan_frontend_registration_confirmation_enabled')) {
-
                     $user->setEnabled(false);
                     $tokenGenerator = $this->get('fos_user.util.token_generator');
                     $mailer = $this->get('webtownkunstmaanfrontenduser.mailer');
@@ -47,12 +46,11 @@ class RegistrationController extends Controller
                     return $this->redirectToRoute('webtown_kunstmaan_frontend_user_registration_confirmed');
                 }
             }
-       }
+        }
 
         return $this->render('WebtownKunstmaanFrontendUserBundle:Registration:frontend_register.html.twig', [
             'form' => $form->createView(),
         ]);
-
     }
 
     /**
@@ -73,9 +71,9 @@ class RegistrationController extends Controller
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
 
-        return $this->render('WebtownKunstmaanFrontendUserBundle:Registration:frontend_check_email.html.twig', array(
+        return $this->render('WebtownKunstmaanFrontendUserBundle:Registration:frontend_check_email.html.twig', [
             'user' => $user,
-        ));
+        ]);
     }
 
     /**
@@ -125,7 +123,7 @@ class RegistrationController extends Controller
     /**
      * @return mixed
      */
-    private function getTargetUrlFromSession()
+    protected function getTargetUrlFromSession()
     {
         $key = sprintf('_security.%s.target_path', $this->get('security.token_storage')->getToken()->getProviderKey());
 
@@ -135,7 +133,7 @@ class RegistrationController extends Controller
     }
 
     /**
-     * @param KunstmaanFrontendUserInterface  $user
+     * @param KunstmaanFrontendUserInterface $user
      */
     protected function authenticate(KunstmaanFrontendUserInterface $user)
     {

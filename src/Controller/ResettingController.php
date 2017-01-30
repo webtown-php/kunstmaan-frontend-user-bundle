@@ -10,11 +10,9 @@ namespace Webtown\KunstmaanFrontendUserBundle\Controller;
 
 use FOS\UserBundle\Util\TokenGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Webtown\KunstmaanFrontendUserBundle\Entity\KunstmaanFrontendUser;
 use Webtown\KunstmaanFrontendUserBundle\Entity\KunstmaanFrontendUserInterface;
 use Webtown\KunstmaanFrontendUserBundle\Model\KunstmaanFrontendUserManagerInterface;
 

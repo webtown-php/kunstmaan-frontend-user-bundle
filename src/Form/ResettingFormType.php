@@ -51,10 +51,10 @@ class ResettingFormType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => $this->class,
             'csrf_token_id' => 'resetting',
-        ));
+        ]);
     }
 
     /**

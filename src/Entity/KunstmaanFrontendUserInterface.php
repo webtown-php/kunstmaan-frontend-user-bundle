@@ -153,6 +153,7 @@ interface KunstmaanFrontendUserInterface extends \Serializable, BaseUserInterfac
 
     /**
      * @param $salt
+     *
      * @return self
      */
     public function setSalt($salt);

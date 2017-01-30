@@ -11,9 +11,9 @@
 
 namespace Webtown\KunstmaanFrontendUserBundle\Util;
 
-use Webtown\KunstmaanFrontendUserBundle\Entity\KunstmaanFrontendUserInterface;
 use Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
+use Webtown\KunstmaanFrontendUserBundle\Entity\KunstmaanFrontendUserInterface;
 
 /**
  * Class updating the hashed password in the user when there is a new password.

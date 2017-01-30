@@ -15,7 +15,9 @@ class SecurityController extends BaseController
 {
     /**
      * Overridden to check if the route matches our member login entry point
+     *
      * @param array $data
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function renderLogin(array $data)
@@ -29,16 +31,12 @@ class SecurityController extends BaseController
         // at this bundles' ::layout.html.twig file, and end in a endless loop
         $route = $request->attributes->get('_route');
 
-        if ($route == 'webtown_kunstmaan_frontend_user_login')
-        {
+        if ($route == 'webtown_kunstmaan_frontend_user_login') {
             $template = 'WebtownKunstmaanFrontendUserBundle:Security:frontend_login.html.twig';
-        }
-        elseif ($route == 'fos_user_security_login')
-        {
+        } elseif ($route == 'fos_user_security_login') {
             $template = 'KunstmaanAdminBundle:Security:login.html.twig';
         }
 
         return $this->container->get('templating')->renderResponse($template, $data);
     }
-
 }

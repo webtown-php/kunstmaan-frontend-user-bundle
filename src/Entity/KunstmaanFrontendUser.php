@@ -82,13 +82,13 @@ abstract class KunstmaanFrontendUser extends AbstractEntity implements Kunstmaan
      */
     public function serialize()
     {
-        return serialize(array(
+        return serialize([
             $this->password,
             $this->username,
             $this->enabled,
             $this->id,
             $this->email,
-        ));
+        ]);
     }
 
     /**
@@ -304,7 +304,7 @@ abstract class KunstmaanFrontendUser extends AbstractEntity implements Kunstmaan
      */
     public function setRoles(array $roles)
     {
-        $this->roles = array();
+        $this->roles = [];
 
         foreach ($roles as $role) {
             $this->addRole($role);
@@ -320,5 +320,4 @@ abstract class KunstmaanFrontendUser extends AbstractEntity implements Kunstmaan
     {
         return (string) $this->getUsername();
     }
-
 }

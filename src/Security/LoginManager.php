@@ -11,7 +11,6 @@
 
 namespace Webtown\KunstmaanFrontendUserBundle\Security;
 
-use Webtown\KunstmaanFrontendUserBundle\Entity\KunstmaanFrontendUserInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -19,6 +18,7 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Http\RememberMe\RememberMeServicesInterface;
 use Symfony\Component\Security\Http\Session\SessionAuthenticationStrategyInterface;
+use Webtown\KunstmaanFrontendUserBundle\Entity\KunstmaanFrontendUserInterface;
 
 /**
  * Abstracts process for manually logging in a user.
@@ -95,7 +95,7 @@ class LoginManager implements LoginManagerInterface
     }
 
     /**
-     * @param string        $firewall
+     * @param string                         $firewall
      * @param KunstmaanFrontendUserInterface $user
      *
      * @return UsernamePasswordToken

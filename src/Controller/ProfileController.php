@@ -11,14 +11,12 @@
 
 namespace Webtown\KunstmaanFrontendUserBundle\Controller;
 
-use Webtown\KunstmaanFrontendUserBundle\Entity\KunstmaanFrontendUserInterface;
-use Webtown\KunstmaanFrontendUserBundle\Model\KunstmaanFrontendUserManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Webtown\KunstmaanFrontendUserBundle\Entity\KunstmaanFrontendUserInterface;
+use Webtown\KunstmaanFrontendUserBundle\Model\KunstmaanFrontendUserManagerInterface;
 
 /**
  * Controller managing the user profile.
@@ -37,9 +35,9 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->render('WebtownKunstmaanFrontendUserBundle:Profile:frontend_show.html.twig', array(
+        return $this->render('WebtownKunstmaanFrontendUserBundle:Profile:frontend_show.html.twig', [
             'user' => $user,
-        ));
+        ]);
     }
 
     /**
