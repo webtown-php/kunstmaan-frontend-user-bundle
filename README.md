@@ -39,7 +39,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new Webtown\KunstmaanFrontendUserBundle\KunstmaanFrontendUserBundle(),
+        new Webtown\KunstmaanFrontendUserBundle\WebtownKunstmaanFrontendUserBundle(),
         // ...
     );
 }
